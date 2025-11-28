@@ -1,9 +1,9 @@
-package com.example.questroom.room;
+package com.example.questroom.room
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "table_siswa")
+@Entity(tableName = "tblSiswa")
 data class Siswa(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
