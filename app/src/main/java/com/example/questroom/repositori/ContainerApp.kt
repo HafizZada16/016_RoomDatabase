@@ -1,4 +1,17 @@
 package com.example.questroom.repositori
 
-class ContainerApp {
+import android.content.Context
+import com.example.questroom.room.DatabaseSiswa
+
+interface ContainerApp {
+    val repositoriSiswa : RepositoriSiswa
+}
+
+class ContainerDataApp(private val context: Context) :
+    ContainerApp {
+        override val repositoriSiswa : RepositoriSiswa by lazy {
+        OfflineRepositoriSiswa(
+            DatabaseSiswa.getDatabase(context).siswaDao()
+        )
+    }
 }
