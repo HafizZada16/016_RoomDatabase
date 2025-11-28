@@ -1,5 +1,6 @@
 package com.example.questroom.repositori
 
+import android.app.Application
 import android.content.Context
 import com.example.questroom.room.DatabaseSiswa
 
@@ -13,5 +14,15 @@ class ContainerDataApp(private val context: Context) :
         OfflineRepositoriSiswa(
             DatabaseSiswa.getDatabase(context).siswaDao()
         )
+    }
+}
+
+class AplikasiSiswa : Application() {
+    lateinit var container: ContainerApp
+
+    override fun onCreate() {
+        super.onCreate()
+        container = ContainerDataApp(this)
+
     }
 }
