@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.questroom.view.EntrySiswaScreen
+import com.example.questroom.view.HomeScreen
 import com.example.questroom.view.route.DestinasiEntry
 import com.example.questroom.view.route.DestinasiHome
 
