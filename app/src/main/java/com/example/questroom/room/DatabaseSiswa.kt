@@ -20,9 +20,6 @@ abstract class DatabaseSiswa : RoomDatabase() {
                     "db_siswa")
                     .build().also { Instance = it }
             }
-
-            ){
-            }
         }
     }
 }
