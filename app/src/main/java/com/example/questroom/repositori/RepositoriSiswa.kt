@@ -1,6 +1,7 @@
 package com.example.questroom.repositori
 
 import com.example.questroom.room.Siswa
+import com.example.questroom.room.SiswaDao
 import kotlinx.coroutines.flow.Flow
 
 interface RepositoriSiswa {
