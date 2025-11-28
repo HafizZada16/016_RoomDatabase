@@ -64,8 +64,6 @@ fun EntrySiswaScreen(
             },
             modifier = Modifier
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .fillMaxSize()
         )
     }
 }
@@ -79,7 +77,8 @@ fun EntrySiswaBody(
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
     ) {
         FormInputSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
