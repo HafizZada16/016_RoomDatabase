@@ -1,6 +1,5 @@
 package com.example.questroom.viewmodel
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.questroom.repositori.RepositoriSiswa
@@ -12,8 +11,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class DetailViewModel (
-    savedStateHandle: SavedStateHandle,
-    private val repositoriSiswa: RepositoriSiswa) : ViewModel(){
+    savedStateHandle: MatchGroup?,
+    private val repositoriSiswa: RepositoriSiswa
+) : ViewModel(){
 
 
     private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetailSiswa.itemIdArg])
