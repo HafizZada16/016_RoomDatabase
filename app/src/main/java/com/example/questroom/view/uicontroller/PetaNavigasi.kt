@@ -61,7 +61,7 @@ fun HostNavigasi(
         ){
             EditSiswaScreen(
                 navigateBack = { navController.popBackStack() },
-                onNavigateUp = { navController.navigateUp() }
+                onNavigateUp = { navController.navigateUp() },
             )
         }
 
