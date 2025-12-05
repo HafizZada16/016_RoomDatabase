@@ -2,10 +2,12 @@ package com.example.questroom.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.questroom.repositori.RepositoriSiswa
+import com.example.questroom.view.route.DestinasiDetailSiswa
 import com.example.questroom.view.route.DestinasiEditSiswa
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
@@ -15,21 +17,18 @@ class EditViewModel (
     savedStateHandle: SavedStateHandle,
     private val repositoriSiswa: RepositoriSiswa) : ViewModel() {
 
-    val uiStateSiswa by mutableStateOf(UIStateSiswa())
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
 
-    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiEditSiswa.itemIdArg])
-
-    init
-    {
-        viewModelScope.launch {
-            uiStateSiswa = repositoriSiswa.getSiswaStream(idSiswa)
-                .filterNotNull()
-                .first()
-                .toUIStateSiswa()
-
+    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetailSiswa.itemIdArg])
+        init {
+            viewModelScope.launch {
+                uiStateSiswa = repositoriSiswa.getSiswaStream(idSiswa)
+                    .filterNotNull()
+                    .first()
+                    .toUiStateSiswa(true)
+            }
         }
-    }
 
     fun updateUiState(detailSiswa: DetailSiswa) {
         uiStateSiswa =
