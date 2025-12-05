@@ -8,6 +8,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -25,6 +27,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questroom.R
+import com.example.questroom.room.Siswa
 import com.example.questroom.view.route.DestinasiDetailSiswa
 import com.example.questroom.viewmodel.DetailSiswaUiState
 import com.example.questroom.viewmodel.DetailViewModel
@@ -117,6 +120,25 @@ private fun BodyDetailDataSiswa(
 }
 
 @Composable
+fun DetailDataSiswa(
+    siswa: Siswa, modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier, colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+
+    }
+}
+
+@Composable
+fun BarisDetailData(labelResID: Int, itemDetail: String, modifier: Modifier) {
+    TODO("Not yet implemented")
+}
+
+@Composable
 fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit,
     onDeleteCancel: () -> Unit,
@@ -125,7 +147,3 @@ fun DeleteConfirmationDialog(
     TODO("Not yet implemented")
 }
 
-@Composable
-fun DetailDataSiswa(siswa: toSiswa, modifier: fillMaxWidth) {
-    TODO("Not yet implemented")
-}
