@@ -1,5 +1,6 @@
 package com.example.questroom.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.room.Update
 import com.example.questroom.R
 import com.example.questroom.room.Siswa
 import com.example.questroom.view.route.DestinasiHome
@@ -41,6 +43,7 @@ import com.example.questroom.viewmodel.provider.PenyediaViewModel
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
+    navigateToItemUpdate: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -72,6 +75,7 @@ fun HomeScreen(
         val uiStateSiswa by viewModel.homeUiState.collectAsState()
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
+            onSiswaClick = navigateToItemUpdate,
             modifier = Modifier
                 .padding(innerPadding)
         )
@@ -81,6 +85,7 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
+    onSiswaClick: (Int) -> Unit,
     modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -95,6 +100,7 @@ fun BodyHome(
         } else {
             ListSiswa(
                 itemSiswa = itemSiswa,
+                onSiswaClick = onSiswaClick,
                 modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
             )
         }
@@ -104,17 +110,24 @@ fun BodyHome(
 @Composable
 fun ListSiswa(
     itemSiswa: List<Siswa>,
+    onSiswaClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
         items(items = itemSiswa, key = { it.id}){
             person -> DataSiswa(
                 siswa = person,
                 modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.padding_small)))
+                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    //edit
+                    .clickable { onSiswaClick(person.id) }
+            )
         }
     }
 }
+
+
+
 
 @Composable
 fun DataSiswa(
@@ -153,6 +166,4 @@ fun DataSiswa(
         }
     }
 }
-
-
 

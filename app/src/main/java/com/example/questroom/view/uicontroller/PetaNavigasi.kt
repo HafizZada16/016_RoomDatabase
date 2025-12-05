@@ -31,7 +31,7 @@ fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    NavHost(navController=navController, startDestination = DestinasiHome.route, modifier = Modifier)
+    NavHost(navController=navController, startDestination = DestinasiHome.route, modifier = modifier)
     {
         composable(DestinasiHome.route) {
             HomeScreen(
@@ -50,10 +50,8 @@ fun HostNavigasi(
             })
         ){
             DetailSiswaScreen(
-                navigateBack = { navController.navigateUp() },
-                onNavigateAfterDelete = {
-                    navController.popBackStack(DestinasiHome.route, inclusive = false)
-                }
+                navigateToEditItem = { navController.navigate("${DestinasiEditSiswa.route}/$it") },
+                navigateBack = { navController.navigateUp() }
             )
         }
         composable(DestinasiEditSiswa.routeWithArgs,

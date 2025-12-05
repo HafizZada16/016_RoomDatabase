@@ -13,12 +13,9 @@ import kotlinx.coroutines.flow.stateIn
 
 class DetailViewModel (
     savedStateHandle: SavedStateHandle,
-    private val repositoriSiswa: RepositoriSiswa
-) : ViewModel(){
+    private val repositoriSiswa: RepositoriSiswa) : ViewModel(){
 
-
-    private val idSiswa: Int = checkNotNull(savedStateHandle.get(DestinasiDetailSiswa.itemIdArg))
-
+    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetailSiswa.itemIdArg])
 
     val uiDetailState: StateFlow<DetailSiswaUiState> =
         repositoriSiswa.getSiswaStream(idSiswa)
@@ -38,6 +35,7 @@ class DetailViewModel (
         private const val TIMEOUT_MILLIS = 5_000L
     }
 }
+
 
 
 /**
