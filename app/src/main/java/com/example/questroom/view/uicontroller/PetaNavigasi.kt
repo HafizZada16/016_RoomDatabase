@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.questroom.view.DetailSiswaScreen
+import com.example.questroom.view.EditSiswaScreen
 import com.example.questroom.view.EntrySiswaScreen
 import com.example.questroom.view.HomeScreen
 import com.example.questroom.view.route.DestinasiDetailSiswa
@@ -34,6 +35,7 @@ fun HostNavigasi(
         composable(DestinasiHome.route) {
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+                navigateToItemUpdate = { navController.navigate("${DestinasiDetailSiswa.route}/${it}") }
             )
         }
         composable(DestinasiEntry.route) {
@@ -48,9 +50,21 @@ fun HostNavigasi(
         ){
             DetailSiswaScreen(
                 navigateBack = { navController.navigateUp() },
+                onNavigateAfterDelete = {
+                    navController.popBackStack(DestinasiHome.route, inclusive = false)
+                }
             )
         }
-        //Delete
+        composable(DestinaasiEditSiswa.routeWithArgs,
+            arguments = listOf(navArgument(itemIdArg) {
+                type = NavType.IntType
+            })
+        ){
+            EditSiswaScreen(
+                navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() }
+            )
+        }
 
 
     }
