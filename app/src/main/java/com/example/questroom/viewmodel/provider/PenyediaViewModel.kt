@@ -29,11 +29,10 @@ object PenyediaViewModel {
             )
         }
 
-        initializer {
-            EditViewModel(
-                this.createSavedStateHandle()[DestinasiEditSiswa.itemIdArg],
-                repositoriSiswa = aplikasiSiswa().container
-        }
+        // initializer {
+        //    EditViewModel(
+        //        this.createSavedStateHandle()[DestinasiEditSiswa.itemIdArg],
+        //        repositoriSiswa = aplikasiSiswa().container
     }
 }
 

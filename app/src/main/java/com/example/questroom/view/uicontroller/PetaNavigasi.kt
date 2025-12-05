@@ -40,7 +40,6 @@ fun HostNavigasi(
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
         }
         //Edit
-
         composable(
             DestinasiDetailSiswa.routeWithArgs,
             arguments = listOf(navArgument(itemIdArg) {
@@ -51,5 +50,8 @@ fun HostNavigasi(
                 navigateBack = { navController.navigateUp() },
             )
         }
+        //Delete
+
+
     }
 }
