@@ -16,6 +16,7 @@ import com.example.questroom.view.HomeScreen
 import com.example.questroom.view.route.DestinasiDetailSiswa
 import com.example.questroom.view.route.DestinasiDetailSiswa.itemIdArg
 import com.example.questroom.view.route.DestinasiEntry
+import com.example.questroom.view.route.DestinasiEditSiswa
 import com.example.questroom.view.route.DestinasiHome
 
 @Composable
@@ -55,8 +56,8 @@ fun HostNavigasi(
                 }
             )
         }
-        composable(DestinaasiEditSiswa.routeWithArgs,
-            arguments = listOf(navArgument(itemIdArg) {
+        composable(DestinasiEditSiswa.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiEditSiswa.itemIdArg) {
                 type = NavType.IntType
             })
         ){
