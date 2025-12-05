@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.questroom.repositori.AplikasiSiswa
 import com.example.questroom.view.route.DestinasiDetailSiswa
 import com.example.questroom.viewmodel.DetailViewModel
+import com.example.questroom.viewmodel.EditViewModel
 import com.example.questroom.viewmodel.EntryViewModel
 import com.example.questroom.viewmodel.HomeViewModel
 
@@ -23,17 +24,13 @@ object PenyediaViewModel {
         }
 
         initializer {
-            DetailViewModel(
-                this.createSavedStateHandle()[DestinasiDetailSiswa.itemIdArg],
-                repositoriSiswa = aplikasiSiswa().container.repositoriSiswa
-            )
+            DetailViewModel(this.createSavedStateHandle(),aplikasiSiswa().container.repositoriSiswa)
         }
 
-        // initializer {
-        //    EditViewModel(
-        //        this.createSavedStateHandle()[DestinasiEditSiswa.itemIdArg],
-        //        repositoriSiswa = aplikasiSiswa().container
-    }
+        initializer {
+            EditViewModel(this.createSavedStateHandle(), aplikasiSiswa().container.repositoriSiswa)
+
+        }}
 }
 
 fun CreationExtras.aplikasiSiswa(): AplikasiSiswa =
