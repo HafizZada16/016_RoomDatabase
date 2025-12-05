@@ -1,5 +1,8 @@
 package com.example.questroom.view
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,18 +12,24 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questroom.R
 import com.example.questroom.view.route.DestinasiDetailSiswa
+import com.example.questroom.viewmodel.DetailSiswaUiState
 import com.example.questroom.viewmodel.DetailViewModel
 import com.example.questroom.viewmodel.provider.PenyediaViewModel
+import com.example.questroom.viewmodel.toSiswa
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,10 +81,24 @@ fun DetailSiswaScreen(
 }
 
 @Composable
-fun BodyDetailDataSiswa(
+private fun BodyDetailDataSiswa(
     detailSiswaUiState: DetailSiswaUiState,
-    onDelete: () -> launch,
-    modifier: verticalScroll
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
+
+}
+
+@Composable
+fun DeleteConfirmationDialog(
+    onDeleteConfirm: () -> Unit,
+    onDeleteCancel: () -> Unit,
+    modifier: Modifier
+) {
+    TODO("Not yet implemented")
+}
+
+@Composable
+fun DetailDataSiswa(siswa: toSiswa, modifier: fillMaxWidth) {
     TODO("Not yet implemented")
 }
